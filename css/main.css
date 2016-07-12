@@ -1,0 +1,546 @@
+/*=======================
+	ALLGEMEIN
+=======================*/
+
+body{
+	font-family: sans-serif;
+	font-size:13px;
+	font-weight:bold;
+	color:#707070;
+	margin: 0;
+	padding: 0;
+	width:100%;
+	height:100%;
+	background-color:#171717;
+} 
+
+a{
+	text-decoration:none;
+}
+
+a:link { 
+	color: #707070; 
+}
+
+a:visited { 
+	color: #707070; 
+}
+
+a:hover { 
+	color: #601010;
+}
+
+h1 { 
+	font-size: 140%; 
+}
+
+h2 {
+	font-size: 120%;
+	padding:0;
+	margin:0;
+}
+
+h3 {
+	font-size: 110%;
+	padding:0;
+	margin:0;
+}
+
+th{
+	font-size: 110%;
+	font-weight:bold;
+}
+
+/*===========================
+	LAYOUTBEREICHE
+===========================*/
+#root{
+	width:1020px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+/************************
+* Bannerbereich
+************************/
+#banner{
+	height:232px;
+	width:1020px;
+	background-image:url(../images/top.gif);
+}
+
+
+/************************
+* Ressourcenanzeige
+************************/
+#infobar{
+	width:1020px;
+	height:32px;
+	text-align:center;
+	background-image:url(../images/infobar.gif);
+}
+
+#infobar img{
+	margin-left: 20px;
+}
+
+		
+/************************
+* Mittelteil-Wrapper
+************************/		
+#data{
+	width:1020px;
+	min-height:300px;
+	background-image:url(../images/data.gif);
+	background-repeat:repeat-y;
+	
+}
+
+
+/************************
+* Navigationsbereich
+************************/
+#navi{
+	float:left;
+	width:113px;
+	padding:20px;
+}
+
+#navi .btn{
+	width: 133px;
+	padding:1px;
+	margin-bottom:10px;
+	border: 1px solid #202020;
+}
+
+#navi #townSelection select{
+    width:133px;
+    margin-bottom: 15px;
+}
+		
+/************************
+* Inhaltsbereich
+************************/
+#content{
+	float:left;
+	width:762px;
+	padding-top:20px;
+	padding-bottom:20px;
+	padding-left:40px;
+	padding-right:40px;
+}
+
+
+/************************
+* Fu�bereich
+************************/
+#bottom{
+	clear:both;
+	width:1020px;
+	height:27px;
+	background-image:url(../images/bottom.gif);
+}
+
+/*===========================
+	Generelle Klassen
+===========================*/
+
+.btn{
+	display: block;
+	padding:3px;
+	
+	font-weight: bold;
+	text-align: center;
+
+	color:#707070;
+	border: 1px solid #000000;
+	background-color:#171717;
+    margin-top:5px;
+}
+
+.btn :hover{
+	color: #601010; 
+	background-color: #141414;
+}
+
+.table{
+    background-color:#202020;
+    border: 1px solid black;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.table tr{
+	background-color: #252525;
+}
+
+.clear{
+    clear: both;
+}
+
+.box{
+    background-color:#202020;
+    border: 1px solid black;
+    margin-left:auto;
+	margin-right:auto;	
+}
+
+#fancybox-inner{
+    background-color:#202020;
+    border: 1px solid black;
+    margin-left:auto;
+	margin-right:auto
+}
+
+.hidden{
+    display:none;
+}
+
+.bold{
+    font-weight:bold;
+    font-size: 110%;
+}
+
+.red{
+    color:red;
+}
+
+.green{
+    color:green;
+}
+
+.center{
+    text-align:center;
+}
+
+.centerBlock{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.description{
+
+}
+
+/************************
+* Fehler
+************************/
+.error{
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom : 15px;
+	text-align:center;
+	border: 1px solid red;
+	background-color: #252525;
+}
+
+
+/*===========================
+	SPEZIELLE SEITEN
+===========================*/
+
+/************************
+* Register Page
+************************/
+
+#regForm{
+    border: 1px solid black;
+    text-align:center;
+    margin-right:auto;
+    margin-left:auto;
+    width:300px;
+    background-color:#202020;
+}
+
+/************************
+* Login Page
+************************/
+#loginForm{
+    border: 1px solid black;
+    text-align:center;
+    margin-right:auto;
+    margin-left:auto;
+    width:300px;
+    background-color:#202020;	
+}
+
+/************************
+* Overview Page
+************************/
+
+.overviewTable{
+    margin-top: 20px;
+    width:100%;
+    text-align:center;
+}
+
+
+/************************
+* Economy Page
+************************/
+
+.ecoTable{
+	margin:0;
+    text-align:center;
+}
+
+#ironForm{
+	margin-top: 30px;
+	padding: 0px 0px 10px 10px;
+	width: 250px;
+	border: 1px solid black;
+	background-color:#202020;
+}
+
+#ironForm input{
+	width:30px;
+}
+
+#ironForm #submit{
+	width:100px;
+}
+
+/************************
+* Construction Page
+************************/
+
+.consTable{
+    width: 80%;
+}
+
+.consTable td, th{
+	padding :7px;
+}
+
+
+/************************
+* Research Page
+************************/
+
+.rscTable{
+    margin-left: 0px;
+    margin-right: 20px;
+	float:left;
+    width: 170px;
+}
+
+.rscTable .expenses {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rscTable th{
+	padding: 5px;
+	text-align:center;		
+}
+
+.rscTable .btn{
+	width: 80px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rscFinished{
+	text-align:center;
+	color:green;
+}
+
+.rscCurrent{
+    border: 2px solid green;
+}
+
+
+
+/************************
+* Recruitment Page
+************************/
+#recrForm input{
+	width: 20px;
+}
+
+#recrForm #submit{
+	width:100px;
+}
+
+.recrTable td, th{
+	padding :5px 15px 5px 15px;
+}
+
+.recrTable{
+    width:80%;
+}
+
+.curProdTable{
+    margin-top: 15px;
+    width:80%;
+    text-align:center;
+}
+
+
+/************************
+* Army Page
+************************/
+.movForm{
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    background-color: #202020;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.movForm .btn{
+    width: 200px;
+}
+
+.movTable{
+    text-align:center;
+}
+
+.movCargo{
+    width: 500px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.movCargo .cargo{
+    float:left;
+    margin-left: 20px;
+}
+
+.movTable input{
+    width : 30px;
+}
+
+.movCoords input{
+    width : 30px;
+}
+
+.movCargo input{
+    width: 100px;
+}
+
+/************************
+* Worldmap
+************************/
+
+.mapControls{
+    text-align: center;
+    font-size: 120%;
+    padding: 5px;
+    border:none;
+}
+
+.mcHorizontal{
+    width: 20px;
+}
+
+.mcVertical{
+    height: 20px;
+}
+
+.mapForm{
+    text-align: center;
+}
+
+.mapForm input{
+    width: 30px;
+    margin: 10px;
+}
+
+.mapForm #submit{
+    width: 80px;
+}
+
+.mapTable{
+}
+
+
+.mapCell{
+    width: 50px;
+    height: 50px
+}
+
+/************************
+* Detailpage
+************************/
+
+.detailBox{
+    width:300px;
+    padding: 20px;
+}
+
+.detailBox .btn{
+    width: 133px;
+    margin: 5px;
+    
+}
+
+
+/************************
+* Message Box
+************************/
+.gotNewMsg{
+    border: 1px solid red;
+}
+
+.unreadMsg{
+    background-color: white; !important
+}
+
+.messages{
+    min-height:200px;
+    width: 550px;
+}
+
+.messages h2{
+    text-align:center;
+    padding: 20px;
+}
+
+.messages .btn{
+    width: 200px;
+    margin:auto auto;
+}
+
+.msgOpen{
+    
+}
+
+.msgTable{
+    width:500px;
+    margin: 0 auto 20px auto;
+}
+
+
+.msgText td{
+    padding: 15px 10px 15px 20px;
+
+}
+
+#msgForm form{
+    width: 300px;
+    margin: auto auto;    
+}
+
+#msgForm input{
+    width: 300px;
+}
+
+
+/************************
+* Fight Report
+************************/
+.reportTable{
+    text-align: center;
+    border:1px solid black;
+    padding: 0px;
+    margin: 0px;
+}
+
+.reportTable td, .reportTable th{
+    padding:1px;
+    margin: 0px;
+}
