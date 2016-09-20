@@ -1,4 +1,9 @@
 # cremoria
-early (highschool) coding experience - medieval based strategy browsergame
+Medieval based strategy browsergame, i started coding in highschool.
+Stopped development in 2009.
+Its not finished but basics should work (buildings, research etc.)
 
-project is based on 'kohana' framework
+Project is based on 'kohana' php framework.
+Unfortunately the database backup is lost but the structure can be reconstructed from the ORM-Model files (which will be hassle).
+
+Hope it will be of use for somebody.
