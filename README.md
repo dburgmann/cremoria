@@ -1,5 +1,5 @@
 # cremoria
-Medieval based strategy browsergame, i started coding in highschool.
+Medieval based strategy browsergame I started coding in highschool to learn php.
 Stopped development in 2009.
 Its not finished but basics should work (buildings, research etc.)
 
