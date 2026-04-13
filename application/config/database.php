@@ -30,12 +30,12 @@ $config['default'] = array
 	'connection'    => array
 	(
 		'type'     => 'mysql',
-		'user'     => 'web289',
-		'pass'     => 'affimszf',
-		'host'     => 'localhost',
-		'port'     => FALSE,
+		'user'     => 'root',
+		'pass'     => 'root',
+		'host'     => 'db',       // Docker service name — NOT localhost
+		'port'     => FALSE,      // 3306 default
 		'socket'   => FALSE,
-		'database' => 'usr_web289_1'
+		'database' => 'cremoria'
 	),
 	'character_set' => 'utf8',
 	'table_prefix'  => '',
