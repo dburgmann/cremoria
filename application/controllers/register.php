@@ -18,8 +18,18 @@ class Register_Controller extends ControllerCremoria{
 		$this->template->content->error     = '';
         $this->template->content->captcha   = new Captcha();
 	}
-	
-	
+
+
+	/**
+	 * Renders the registration page.
+	 * Template variables are initialised in __construct().
+	 */
+	public function index(){
+		// Template, navi, and content view are already set in __construct().
+		// The template controller renders automatically.
+	}
+
+
 	/**
 	 * Starts a registration process, using the post data submitted by
 	 * the register form.
@@ -39,7 +49,7 @@ class Register_Controller extends ControllerCremoria{
 
             if (!Captcha::valid($this->input->post('captcha_response'))){   //Check Captcha
 				$this->template->content->error = 'regWrongCaptcha';								
-			}elseif(!$password == $passwordRep){                            //Check if Pws match
+			}elseif($password !== $passwordRep){                            //Check if Pws match
                 $this->template->content->error = 'regNoPwMatch';
             }elseif(!$this->isValid($username, $password, $email)){         //Validate RegData
 			}else{                                                          //Register User
@@ -57,7 +67,6 @@ class Register_Controller extends ControllerCremoria{
 		else{
 			$this->template->content->error = 'regElementEmpty';
 		}
-		$this->index();
 	}
 	
 	
@@ -115,8 +124,6 @@ class Register_Controller extends ControllerCremoria{
 	private function sendActivationEmail($code, $email){
 		$domain	 	= kohana::config('config.site_domain', true);		
 		$verifyLink = $domain."index.php/verify/index/".$code;
-		
-		echo $verifyLink;
 		
 		$to      = $email;
 		$from    = 'Cremoria';

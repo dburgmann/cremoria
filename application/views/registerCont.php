@@ -2,7 +2,6 @@
 	if(!empty($error)){
 		echo error::display($error);	
 	}
-/*
     echo form::open('register/register', array("id" => "regForm"))   .' <br> ';
 	echo form::label('name', 'Name:')			                     .' <br> ';
 	echo form::input('name')					                     .' <br> ';
@@ -16,6 +15,5 @@
 	echo $captcha->render()                                          .' <br> ';
 	echo form::input('captcha_response')                             .' <br> ';
 	echo form::submit('submit', 'Registrieren')	                     .' <br> ';
-	echo form::close();*/
+	echo form::close();
 ?>
-<p> Die Registrierung ist momentan deaktiviert!</p>
