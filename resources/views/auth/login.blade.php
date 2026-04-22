@@ -3,10 +3,7 @@
 @section('title', 'Anmelden')
 
 @section('content')
-<h1>Cremoria</h1>
-<h2>Anmelden</h2>
-
-<form method="POST" action="{{ route('login') }}">
+<form method="POST" action="{{ route('login') }}" id="loginForm">
     @csrf
 
     <div>
@@ -31,7 +28,7 @@
         </label>
     </div>
 
-    <button type="submit">Anmelden</button>
+    <button type="submit" class="btn">Anmelden</button>
 </form>
 
 <p>Noch kein Konto? <a href="{{ route('register') }}">Jetzt registrieren</a></p>

@@ -9,12 +9,15 @@ services:
       - .:/var/www/html
       - /var/www/html/vendor        # keep container vendor dir intact
       - /var/www/html/node_modules
+      - /var/www/html/public/build  # keep vite-built assets from image
     depends_on:
       db:
         condition: service_healthy
     environment:
       APP_ENV: local
       APP_DEBUG: "true"
+      APP_URL: "http://localhost:8888"
+      ASSET_URL: "http://localhost:8888"
       DB_CONNECTION: mysql
       DB_HOST: db
       DB_PORT: 3306

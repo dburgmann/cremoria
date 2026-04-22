@@ -236,3 +236,23 @@ SET foreign_key_checks = 1;
 INSERT INTO roles (name, description) VALUES
   ('login',      'Verified account — may log in'),
   ('unverified', 'Registered but awaiting email verification');
+
+-- ------------------------------------------------------------
+-- Seed data: test account
+-- Credentials: username=test  password=test
+-- Hash generated with sha1 + salt_pattern '1,3,5,9,14,15,20,21,28,30'
+-- ------------------------------------------------------------
+INSERT INTO users (email, username, password) VALUES
+  ('test@example.com', 'test', 'aa55b89c63efd1a142ecf9cdb4gbh0cc5722i6ajae0870d547');
+
+INSERT INTO roles_users (user_id, role_id)
+  SELECT u.id, r.id FROM users u, roles r
+  WHERE u.username = 'test' AND r.name = 'login';
+
+INSERT INTO towns (user_id, name, x, y, gold, wood, stone, iron,
+                   goldInc, woodInc, stoneInc, ironInc, ironIncMax,
+                   unitCap, movCap)
+  SELECT id, 'Testburg', 5, 5, 500, 500, 500, 500,
+         10, 10, 10, 10, 100,
+         20, 5
+  FROM users WHERE username = 'test';

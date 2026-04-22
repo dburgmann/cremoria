@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 abstract class GameController extends Controller
 {
     protected User $user;
-    protected Town $activeTown;
+    protected ?Town $activeTown = null;
 
     public function __construct()
     {
@@ -35,6 +35,9 @@ abstract class GameController extends Controller
                 // DB-level ownership check — no PHP loop needed
                 $this->activeTown = $this->user->towns()->findOrFail($townId);
                 $this->activeTown->load(['buildings', 'units', 'unitProductions']);
+            } else {
+                // User has no town yet — nothing in the game is usable without one
+                abort(503, 'Kein Stadtslot gefunden. Bitte wende dich an den Administrator.');
             }
 
             $unreadCount = $this->user->messages()
