@@ -1,14 +1,61 @@
-FROM --platform=linux/amd64 php:5.6-apache
+FROM php:8.3-fpm-alpine
 
-# Set timezone — required in PHP 5.3+; missing it fires a warning before
-# headers are sent, which breaks Kohana's output entirely.
-RUN echo "date.timezone=UTC" > /usr/local/etc/php/conf.d/timezone.ini
+# Install system dependencies
+RUN apk add --no-cache \
+    nginx \
+    nodejs \
+    npm \
+    mysql-client \
+    git \
+    curl \
+    libpng-dev \
+    oniguruma-dev \
+    libxml2-dev \
+    zip \
+    unzip
 
-# mysql extension — available in PHP 5.6, needs explicit activation
-RUN docker-php-ext-install mysql mysqli
+# Install PHP extensions
+RUN docker-php-ext-install \
+    pdo_mysql \
+    mbstring \
+    exif \
+    pcntl \
+    bcmath \
+    gd \
+    opcache
 
-# Enable mod_rewrite for Kohana URL routing
-RUN a2enmod rewrite
+# Configure OPcache for production
+RUN echo "opcache.enable=1" >> /usr/local/etc/php/conf.d/opcache.ini && \
+    echo "opcache.memory_consumption=128" >> /usr/local/etc/php/conf.d/opcache.ini && \
+    echo "opcache.max_accelerated_files=10000" >> /usr/local/etc/php/conf.d/opcache.ini && \
+    echo "opcache.revalidate_freq=0" >> /usr/local/etc/php/conf.d/opcache.ini && \
+    echo "opcache.validate_timestamps=0" >> /usr/local/etc/php/conf.d/opcache.ini
 
-# Allow .htaccess overrides in the document root
-COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+WORKDIR /var/www/html
+
+# Copy application files
+COPY . .
+
+# Install PHP dependencies (production only)
+RUN composer install --no-dev --optimize-autoloader --no-interaction
+
+# Install and build Node assets
+RUN npm install && npm run build
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
+    chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Copy nginx config
+COPY docker/nginx.conf /etc/nginx/http.d/default.conf
+
+# Entrypoint: run migrations and cache configs, then start services
+COPY docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 80
+
+ENTRYPOINT ["/entrypoint.sh"]
